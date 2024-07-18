@@ -30,6 +30,6 @@ export const setting = {
     password: password,
     database: database,
     host: host,
-    dialect: "mysql",
+    dialect: "postgres",
   },
 };
