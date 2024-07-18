@@ -1,7 +1,7 @@
-import { validateUsername } from './quiz-validator';
+import { validateUsername } from './validator/quiz-validator';
 import { Request, Response } from "express";
 import { generateQuizId } from '../utils/generate-quiz-id';
-import Quiz from './quiz-model';
+import Quiz from './model/quiz-model';
 import SuccessResponse from '../utils/success-response';
 
 export const startQuiz=async(req:Request,res:Response):Promise<void>=>{
