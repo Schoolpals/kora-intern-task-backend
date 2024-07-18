@@ -1,10 +1,10 @@
 import { data } from "./data";
 
-export const getKoraQuizById = (id: number)=> {
-    if(!id){
+export const getKoraQuizById = (quesId: number)=> {
+    if(!quesId){
         throw new Error("quiz not found")
     }
-  return data.find((quiz) => quiz.id === id);
+  return data.find((quiz) => quiz.id === quesId);
 
   };
 
