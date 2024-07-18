@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import { NodeEnvironment } from "../utils/types";
 import { Sequelize } from "sequelize-typescript";
 import { setting } from "../config/db";
+import User from "../users/user-model";
 
 dotenv.config();
 
@@ -16,7 +17,9 @@ const config = setting[env];
 const connString = `${config.dialect}://${config.username}:${config.password}@${config.host}/${config.database}`;
 
 const sequelize = new Sequelize(connString, {
-  models: [],
+  models: [
+    User
+  ],
 });
 
 export default sequelize;
