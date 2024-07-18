@@ -31,7 +31,9 @@
     "typescript": "^5.5.3"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/cors": "^2.8.17",
+    "@types/lodash": "^4.17.7",
     "@types/uuid": "^10.0.0"
   }
 }
