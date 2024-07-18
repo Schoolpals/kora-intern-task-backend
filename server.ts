@@ -28,7 +28,7 @@ sequelize
 
     process.exit(1);
   });
-// sequelize.sync()
+sequelize.sync()
 routes(app);
 
 app.listen(port, () => {
