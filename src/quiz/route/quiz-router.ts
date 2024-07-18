@@ -1,5 +1,3 @@
-
-
 import express from "express";
 import { startQuiz } from "../quiz";
 const router = express.Router();
