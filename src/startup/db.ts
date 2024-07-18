@@ -5,6 +5,7 @@ import { Sequelize } from "sequelize-typescript";
 import { setting } from "../config/db";
 import User from "../users/user-model";
 import Quiz from "../quiz/model/quiz-model";
+import Token from "../token/model/token-model";
 
 dotenv.config();
 
@@ -21,7 +22,8 @@ const connString = `${config.dialect}://${config.username}:${config.password}@${
 const sequelize = new Sequelize(connString, {
   models: [
     User,
-    Quiz
+    Quiz,
+    Token
   ],
 });
 
