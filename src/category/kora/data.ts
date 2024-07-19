@@ -1,4 +1,4 @@
-import Kora from "./model/kora-model";
+
 
 export const data = [
   {
@@ -62,14 +62,3 @@ export const data = [
     "answer": 3
   }
 ];
-
-
-const populateKoraData = async (): Promise<void> => {
-  try {
-    await Kora.bulkCreate(data);
-    console.log("Data populated successfully!");
-  } catch (error) {
-    console.error("Error populating data:", error);
-  }
-};
-populateKoraData();

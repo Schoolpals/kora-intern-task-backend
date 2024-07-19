@@ -3,6 +3,8 @@ import { Request, Response } from "express";
 import { generateQuizId } from '../utils/generate-quiz-id';
 import Quiz from './model/quiz-model';
 import SuccessResponse from '../utils/success-response';
+import Kora from '../category/kora/model/kora-model';
+import { data } from '../category/kora/data';
 
 export const startQuiz=async(req:Request,res:Response):Promise<void>=>{
     const validation = validateUsername(req.body);
@@ -12,6 +14,7 @@ export const startQuiz=async(req:Request,res:Response):Promise<void>=>{
     }
     const{username}=validation.value
 const quizId=generateQuizId()
+await Kora.bulkCreate(data);
 const quiz= await Quiz.create({
     quizId
 })
