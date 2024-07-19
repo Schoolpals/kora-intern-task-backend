@@ -24,7 +24,7 @@ export const signIn = async (req: Request, res: Response) => {
     const isPasswordValid = await bcrypt.compare(password, hashedPassword);
   
     if (!isPasswordValid) {
-      return res.status(400).send({ error: "Email or Password Incorrect" });
+      return res.status(400).send({ error: "Username or Password Incorrect" });
     }
     const token = await generateToken(userName);
     const withoutPassword = _.pick(user, ["UserName", "email"]);
