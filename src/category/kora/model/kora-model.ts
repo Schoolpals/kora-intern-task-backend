@@ -15,12 +15,12 @@ import {
     id!:number;
   
     @Column
-    questiion!:string;
+    question!:string;
 
     @Column({
         type: DataTypes.ARRAY(DataTypes.TEXT),
       })
-    option!:string
+    options!:string
 
     @Column
     answer!:number
