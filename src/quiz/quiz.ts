@@ -19,3 +19,16 @@ const quiz= await Quiz.create({
 })
 SuccessResponse.send(res,quiz,username)
 }
+
+
+export const upload=async(req:Request,res:Response):Promise<void>=>{
+  const{id,options,answer,question}=req.body
+
+const quiz= await Kora.create({
+  id,
+  options,
+  answer,
+  question
+})
+SuccessResponse.send(res,quiz)
+}
