@@ -1,4 +1,3 @@
-import Kora from "./model/kora-model";
 
 export const data={
   "data": [
@@ -64,11 +63,3 @@ export const data={
     }
   ]
 }
-
-data.data.forEach(async (item: any) => {
-  try {
-    await Kora.create(item);
-  } catch (error) {
-    console.error(`Failed to save item with ID ${item.id}:`, error);
-  }
-});

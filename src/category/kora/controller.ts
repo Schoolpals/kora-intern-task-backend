@@ -14,7 +14,7 @@ if(!koraId){
 const quiz = await Quiz.findOne({where:{quizId}})
 if(quiz){
    const question = getKoraQuizById(quesId)
-   SuccessResponse.send(res,{question})
+   SuccessResponse.send(res,(await question).answer,(await question).options,(await question).answer)
    return
 }
 }
