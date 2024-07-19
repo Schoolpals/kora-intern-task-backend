@@ -1,9 +1,9 @@
 import User from "../users/user-model";
 
 
-export const findByUsername = async (username: string): Promise<User | null> => {
+export const findByUsername = async (userName: string): Promise<User | null> => {
     const user = await User.findOne({
-      where: { username },
+      where: { userName },
     });
     return user;
   };
