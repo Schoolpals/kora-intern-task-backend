@@ -18,7 +18,7 @@ allowNull: true,
         allowNull: true,
       },
       options: {
-        type: Sequelize.ARRAY(Sequelize.STRING),
+        type: Sequelize.JSONB(Sequelize.STRING),
         allowNull: true,
       },
       answer: {

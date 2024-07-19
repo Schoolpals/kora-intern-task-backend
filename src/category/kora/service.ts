@@ -1,23 +1,22 @@
 
 
-import { koraData } from "../../utils/types";
+// import { koraData } from "../../utils/types";
+import { data } from "./data";
 import Kora from "./model/kora-model";
 
 
-export const getKoraQuizById = async (id: number) => {
-    const quiz = await Kora.findOne({ where: { id } });
-    if (!quiz) {
-      throw new Error("Quiz not found");
-    }
-    return quiz
-   ;
+export const getKoraQuizById = async (quesId: number) => {
+  const quiz = await Kora.findOne({ where: { quesId } });
+  if (!quiz) {
+    throw new Error("Quiz not found");
   }
-
+  return quiz;
+};
 
 export const getAllQuizIds = async (): Promise<number[]> => {
   try {
     const quizzes = await Kora.findAll();
-    const quizIds = quizzes.map((quiz) => quiz.id);
+    const quizIds = quizzes.map((quiz) => quiz.quesId);
     return quizIds;
   } catch (error) {
     console.error("Error retrieving quiz IDs:", error);
@@ -25,11 +24,21 @@ export const getAllQuizIds = async (): Promise<number[]> => {
   }
 };
 
-export const createKoraQuiz = async (kora: koraData) => {
-  const createdQuiz = await Kora.create({ ...kora });
-  return createdQuiz.dataValues;
-};
+// export const createKoraQuiz = async (kora: koraData) => {
+//   const createdQuiz = await Kora.create({ ...kora });
+//   return createdQuiz.dataValues;
+// };
 
+async function initializeApp() {
+  try {
+    await Kora.sync();
+    await Kora.bulkCreate(data.data);
+    console.log('Data inserted successfully');
+  } catch (error) {
+    console.error('Error inserting data:', error);
+  }
+}
+initializeApp();
 //   const quizIds = getAllQuizIds();
 // console.log(quizIds);
 // data.forEach((question) => {

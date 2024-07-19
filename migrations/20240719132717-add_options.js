@@ -3,7 +3,7 @@
 module.exports = {
    async up (queryInterface, Sequelize){
     await queryInterface.addColumn('kora', 'options', {
-      type: Sequelize.ARRAY(Sequelize.STRING),
+      type: Sequelize.JSONB(Sequelize.STRING),
       allowNull: true,
       defaultValue: []
     });

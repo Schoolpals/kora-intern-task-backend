@@ -1,7 +1,7 @@
+import { DataTypes } from 'sequelize';
 
 import {
     Column,
-    DataType,
     Model,
     PrimaryKey,
     Table,
@@ -22,7 +22,7 @@ import {
     question!:string;
 
     @Column({
-      type: DataType.ARRAY(DataType.STRING),
+      type: DataTypes.JSONB,
     })
     options!:string[]
 

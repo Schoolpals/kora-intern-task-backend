@@ -1,4 +1,4 @@
-import { createKoraQuiz } from './../category/kora/service';
+// import { createKoraQuiz } from './../category/kora/service';
 import { validateUsername } from './validator/quiz-validator';
 import { Request, Response } from "express";
 import { generateQuizId } from '../utils/generate-quiz-id';
@@ -20,11 +20,11 @@ SuccessResponse.send(res,quiz,username)
 }
 
 
-export const upload=async(req:Request,res:Response):Promise<void>=>{
-  const{quesId,options,answer,question}=req.body
+// export const upload=async(req:Request,res:Response):Promise<void>=>{
+//   const{quesId,options,answer,question}=req.body
 
-const createdQuiz= await createKoraQuiz({
-  quesId,options,answer,question
-})
-SuccessResponse.send(res,createdQuiz)
-}
+// const createdQuiz= await createKoraQuiz({
+//   quesId,options,answer,question
+// })
+// SuccessResponse.send(res,createdQuiz)
+// }
