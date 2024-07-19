@@ -1,8 +1,8 @@
 import Joi from "joi";
 
 const signInByMailSchema = Joi.object({
-  userName: Joi.string().min(7).required(),
-  password: Joi.string().required(),
+  userName: Joi.string().trim().required(),
+  password: Joi.string().min(6).required(),
 });
 
 export function validateLoginInfo(data: any) {
