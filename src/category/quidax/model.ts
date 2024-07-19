@@ -1,29 +1,39 @@
-import {  DataTypes, Model } from 'sequelize';
-import sequelize from '../../startup/db';
-import { Question } from './interface';
+import { DataTypes } from 'sequelize';
+import {
+    Column,
+    Model,
+    PrimaryKey,
+    Table,
+  } from "sequelize-typescript";
 
-Question.init({
-    id: {
-        type: DataTypes.INTEGER.UNSIGNED,
-        autoIncrement: true,
-        primaryKey: true,
-    },
-    question: {
-        type: new DataTypes.STRING(128),
-        allowNull: false,
-    },
-    options: {
-        type: DataTypes.JSON,
-        allowNull: false,
-    },
-    answer: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
-}, {
-    tableName: 'questions',
-    sequelize,
-});
+  @Table({ tableName: "quidax_info" })
+  class QuidaxInfo extends Model {
+    @PrimaryKey
+    @Column({
+      type: DataTypes.INTEGER,
+      autoIncrement: true
+    })
+    id!: number;
+  
+   @Column
+   quesId!:number
 
-export default Question;
+   @Column({
+    type: DataTypes.STRING
+  })
+  question!: string;
+
+    @Column({
+      type: DataTypes.JSON
+    })
+    options!: { option: string; isCorrect: boolean }[]
+
+    @Column({
+      type: DataTypes.INTEGER
+    })
+    answer!: number;
+  }
+  
+  export default QuidaxInfo;
+
 
