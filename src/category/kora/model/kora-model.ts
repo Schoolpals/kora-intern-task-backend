@@ -12,22 +12,29 @@ import {
   @Table({ tableName: "kora" })
   class Kora extends Model {
     @PrimaryKey
-    @Column
-    id!:number;
+    @Column({
+      type: DataTypes.INTEGER,
+      autoIncrement: true
+    })
+    id!: number;
   
    @Column
    quesId!:number
 
-    @Column
-    question!:string;
+   @Column({
+    type: DataTypes.STRING
+  })
+  question!: string;
 
     @Column({
-      type: DataTypes.JSONB,
+      type: DataTypes.JSON
     })
-    options!:string[]
+    options!: { option: string; isCorrect: boolean }[]
 
-    @Column
-    answer!:number
+    @Column({
+      type: DataTypes.INTEGER
+    })
+    answer!: number;
   }
   
   export default Kora;

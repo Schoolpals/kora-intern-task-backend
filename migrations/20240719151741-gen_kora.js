@@ -18,8 +18,8 @@ allowNull: true,
         allowNull: true,
       },
       options: {
-        type: Sequelize.JSONB(Sequelize.STRING),
-        allowNull: true,
+        type: Sequelize.JSON,
+        allowNull: false,
       },
       answer: {
         type: Sequelize.INTEGER,
