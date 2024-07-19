@@ -14,7 +14,6 @@ export const startQuiz=async(req:Request,res:Response):Promise<void>=>{
     }
     const{username}=validation.value
 const quizId=generateQuizId()
-await Kora.bulkCreate(data);
 const quiz= await Quiz.create({
     quizId
 })
