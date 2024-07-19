@@ -1,4 +1,3 @@
-
 import dotenv from "dotenv";
 import { NodeEnvironment } from "../utils/types";
 import { Sequelize } from "sequelize-typescript";
@@ -12,7 +11,7 @@ import PiggyInfo from "../category/piggyvest/model/piggyvest-model";
 
 dotenv.config();
 
-const env = (process.env.NODE_ENV as NodeEnvironment) || "production";
+const env = (process.env.NODE_ENV as NodeEnvironment) || "development";
 const config = setting[env];
 
 /**

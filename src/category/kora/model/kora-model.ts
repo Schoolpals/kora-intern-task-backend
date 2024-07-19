@@ -8,7 +8,6 @@ import {
 
   } from "sequelize-typescript";
 
-  
   @Table({ tableName: "kora" })
   class Kora extends Model {
     @PrimaryKey
@@ -23,8 +22,8 @@ import {
 
    @Column({
     type: DataTypes.STRING
-  })
-  question!: string;
+      })
+    question!: string;
 
     @Column({
       type: DataTypes.JSON
@@ -38,3 +37,4 @@ import {
   }
   
   export default Kora;
+

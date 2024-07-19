@@ -9,5 +9,7 @@ router.put("/store-kora",storeKora)
 router.post("/quidax-display",quidax)
 router.get("/piggy-display",piggy)
 router.put("/store-piggy",storePiggy)
+router.post("/quidax-display",quidax)
+router.post("/kora-question",storeKora)
 
 export default router
