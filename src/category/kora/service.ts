@@ -1,6 +1,6 @@
 import { data } from "./data";
 
-export const getKoraQuizById = (id: number)=> {
+export const getKoraQuizById = async(id: number)=> {
     if(!id){
         throw new Error("quiz not found")
     }
