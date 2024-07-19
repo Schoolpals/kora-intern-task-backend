@@ -5,14 +5,14 @@ import SuccessResponse from '../../utils/success-response';
 import Kora from './model/kora-model';
 
 export const kora = async (req: Request, res: Response): Promise<void> => {
-  const { quesId, quizId } = req.body;
+  const { quesId} = req.body;
    // Fetch the quiz by quiz ID
-   const quiz = await Quiz.findOne({ where: { quizId } });
+  //  const quiz = await Quiz.findOne({ where: { quizId } });
 
-   if (!quiz) {
-     res.status(400).json({ message: 'Quiz not found' });
-     return;
-   }
+  //  if (!quiz) {
+  //    res.status(400).json({ message: 'Quiz not found' });
+  //    return;
+  //  }
 
     // Fetch the kora quiz by question ID
     const koraQuiz = await Kora.findOne({ where: { quesId } });
