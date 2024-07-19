@@ -30,6 +30,7 @@ sequelize
     process.exit(1);
   });
 
+sequelize.sync()
 
 routes(app);
 
