@@ -1,4 +1,4 @@
-import { data } from "./data";
+import Kora from "./model/kora-model";
 
 export const getKoraQuizById = (quesId: number)=> {
     if(!quesId){
@@ -9,13 +9,30 @@ export const getKoraQuizById = (quesId: number)=> {
 export const getKoraQuizById = (id: any)=> {
     if(!id){
         throw new Error("quiz not found")
-    }
-  return  data.find((quiz) => quiz.id === id);
-  };
 
-  export const getAllQuizIds = (): number[] => {
-    return data.map((quiz) => quiz.id);
-  };
+export const getKoraQuizById = async (id: number) => {
+    const quiz = await Kora.findOne({ where: { id } });
+    if (!quiz) {
+      throw new Error("Quiz not found");
+    }
+  
+     const question=quiz.questiion
+     const options=quiz.option
+     const answer=quiz.answer
+    return { question, options, answer };
+  }
+
+
+export const getAllQuizIds = async (): Promise<number[]> => {
+  try {
+    const quizzes = await Kora.findAll();
+    const quizIds = quizzes.map((quiz) => quiz.id);
+    return quizIds;
+  } catch (error) {
+    console.error("Error retrieving quiz IDs:", error);
+    throw error;
+  }
+};
 
 //   const quizIds = getAllQuizIds();
 // console.log(quizIds);
@@ -25,5 +42,5 @@ export const getKoraQuizById = (id: any)=> {
 //     console.log("----------------");
 //   });
 
-const hmm=  getKoraQuizById(1)
-console.log(hmm)
+// const hmm=  getKoraQuizById(1)
+// console.log(hmm)

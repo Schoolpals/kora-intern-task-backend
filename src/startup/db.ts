@@ -6,6 +6,7 @@ import { setting } from "../config/db";
 import User from "../users/user-model";
 import Quiz from "../quiz/model/quiz-model";
 import Token from "../token/model/token-model";
+import Kora from "../category/kora/model/kora-model";
 
 dotenv.config();
 
@@ -23,7 +24,8 @@ const sequelize = new Sequelize(connString, {
   models: [
     User,
     Quiz,
-    Token
+    Token,
+    Kora
   ],
 });
 
