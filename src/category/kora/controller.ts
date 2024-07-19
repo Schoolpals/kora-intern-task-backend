@@ -8,7 +8,10 @@ export const kora=async(req:Request,res:Response):Promise<void>=>{
 const {quesId,quizId}=req.body
 const quiz = await Quiz.findOne({where:{quizId}})
 if(quiz){
-   const question=await getKoraQuizById(quesId)
-   SuccessResponse.send(res,question?.question)
+   const data=await getKoraQuizById(quesId)
+   const question=data?.question
+   const options=data?.options
+   const answer=data?.answer
+   SuccessResponse.send(res,{question,options,answer})
 }
 }
