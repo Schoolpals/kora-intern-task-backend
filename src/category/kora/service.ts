@@ -6,10 +6,8 @@ export const getKoraQuizById = async (id: number) => {
     if (!quiz) {
       throw new Error("Quiz not found");
     }
-     const question=quiz.questiion
-     const options=quiz.option
-     const answer=quiz.answer
-    return { question, options, answer };
+    return quiz
+   ;
   }
 
 

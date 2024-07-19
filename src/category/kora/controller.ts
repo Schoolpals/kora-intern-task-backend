@@ -5,7 +5,7 @@ import Quiz from "../../quiz/model/quiz-model";
 import SuccessResponse from '../../utils/success-response';
 import Kora from './model/kora-model';
 
-export const kora=async(req:Request,res:Response):Promise<void>=>{
+export const kora = async(req:Request,res:Response):Promise<void>=>{
 const {quesId,quizId}=req.body
 const koraId=await Kora.findOne({where:{id:quesId}})
 if(!koraId){
