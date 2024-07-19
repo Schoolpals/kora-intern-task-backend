@@ -6,12 +6,14 @@ import SuccessResponse from '../../utils/success-response';
 
 export const kora=async(req:Request,res:Response):Promise<void>=>{
 const {quesId,quizId}=req.body
+if(quesId >=11){
+    res.status(400).send("Question not Found")
+    return
+}
 const quiz = await Quiz.findOne({where:{quizId}})
 if(quiz){
-   const data=await getKoraQuizById(quesId)
-   const question=data?.question
-   const options=data?.options
-   const answer=data?.answer
-   SuccessResponse.send(res,{question,options,answer})
+   const question = getKoraQuizById(quesId)
+   SuccessResponse.send(res,{question})
+   return
 }
 }
