@@ -13,9 +13,9 @@ export const signIn = async (req: Request, res: Response) => {
       res.status(400).json({ error: validation.error.details[0].message });
       return;
     }
-    const { username, password } = validation.value
+    const { userName, password } = validation.value
   
-    const user = await findByUsername(username);
+    const user = await findByUsername(userName);
     if (!user) {
       return res.status(400).send({ error: "Username or Password Incorrect" });
     }
@@ -26,7 +26,7 @@ export const signIn = async (req: Request, res: Response) => {
     if (!isPasswordValid) {
       return res.status(400).send({ error: "Email or Password Incorrect" });
     }
-    const accessToken = generateToken(username);
+    const accessToken = generateToken(userName);
     const withoutPassword = _.pick(user, ["firstName", "lastName", "email"]);
     SuccessResponse.send(res, { accessToken, user: withoutPassword });
   };
