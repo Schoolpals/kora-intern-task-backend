@@ -56,7 +56,7 @@ export const data={
       "answer": 2
     },
     {
-      "quesId": 10,
+     "quesId": 10,
       "question": "How can businesses contact Kora for support and inquiries?",
       "options": ["Email", "Phone call", "Live chat", "All of the above"],
       "answer": 3

@@ -8,6 +8,7 @@ import Quiz from "../quiz/model/quiz-model";
 import Token from "../token/model/token-model";
 import Kora from "../category/kora/model/kora-model";
 import KoraInfo from "../category/kora/model/kora-info-model";
+import PiggyInfo from "../category/piggyvest/model/piggyvest-model";
 
 dotenv.config();
 
@@ -27,7 +28,8 @@ const sequelize = new Sequelize(connString, {
     Quiz,
     Token,
     Kora,
-    KoraInfo
+    KoraInfo,
+    PiggyInfo
   ],
 });
 

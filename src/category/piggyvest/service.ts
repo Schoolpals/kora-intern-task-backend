@@ -1,7 +1,8 @@
-import KoraInfo from "./model/kora-info-model";
+import PiggyInfo from "./model/piggyvest-model";
 
-export const getKoraQuizById = async (quesId: number) => {
-  const quiz = await KoraInfo.findOne({ where: { quesId } });
+
+export const getPiggyQuizById = async (quesId: number) => {
+  const quiz = await PiggyInfo.findOne({ where: { quesId } });
   if (!quiz) {
     throw new Error("Quiz not found");
   }
@@ -10,7 +11,7 @@ export const getKoraQuizById = async (quesId: number) => {
 
 export const getAllQuizIds = async (): Promise<number[]> => {
   try {
-    const quizzes = await KoraInfo.findAll();
+    const quizzes = await PiggyInfo.findAll();
     const quizIds = quizzes.map((quiz) => quiz.quesId);
     return quizIds;
   } catch (error) {
