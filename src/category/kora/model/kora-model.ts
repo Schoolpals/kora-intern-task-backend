@@ -18,9 +18,9 @@ import {
     question!:string;
 
     @Column({
-        type: DataTypes.ARRAY(DataTypes.TEXT),
-      })
-    options!:string
+      type: DataTypes.ARRAY(DataTypes.STRING),
+    })
+    options!:string[]
 
     @Column
     answer!:number
