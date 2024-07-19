@@ -15,6 +15,9 @@ import {
     @Column
     id!:number;
   
+   @Column
+   quesId!:number
+
     @Column
     question!:string;
 

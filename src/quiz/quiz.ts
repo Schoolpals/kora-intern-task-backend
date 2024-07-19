@@ -21,10 +21,10 @@ SuccessResponse.send(res,quiz,username)
 
 
 export const upload=async(req:Request,res:Response):Promise<void>=>{
-  const{id,options,answer,question}=req.body
+  const{quesId,options,answer,question}=req.body
 
 const createdQuiz= await createKoraQuiz({
-  id,options,answer,question
+  quesId,options,answer,question
 })
 SuccessResponse.send(res,createdQuiz)
 }

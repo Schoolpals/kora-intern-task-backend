@@ -1,4 +1,6 @@
-import { KoraQuizType } from "../../utils/types";
+
+
+import { koraData } from "../../utils/types";
 import Kora from "./model/kora-model";
 
 
@@ -23,7 +25,7 @@ export const getAllQuizIds = async (): Promise<number[]> => {
   }
 };
 
-export const createKoraQuiz = async (kora: KoraQuizType) => {
+export const createKoraQuiz = async (kora: koraData) => {
   const createdQuiz = await Kora.create({ ...kora });
   return createdQuiz.dataValues;
 };

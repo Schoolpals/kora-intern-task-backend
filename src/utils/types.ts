@@ -1,5 +1,8 @@
-import { InferAttributes } from "sequelize";
-import Kora from "../category/kora/model/kora-model";
-
 export type NodeEnvironment = "development" | "test" | "production";
-export type KoraQuizType = InferAttributes<Kora>;
+
+export interface koraData {
+  quesId: number;
+  options: string;
+  answer: number;
+  question: string;
+}
