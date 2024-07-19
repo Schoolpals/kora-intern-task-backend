@@ -9,6 +9,6 @@ const {quesId,quizId}=req.body
 const quiz = await Quiz.findOne({where:{quizId}})
 if(quiz){
    const question=await getKoraQuizById(quesId)
-   SuccessResponse.send(res,question)
+ res.status(200).json({question})
 }
 }
