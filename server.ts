@@ -4,8 +4,7 @@ import sequelize from "./src/startup/db";
 import configChecks from "./src/startup/config-checks";
 import dotenv from "dotenv";
 import cors from "cors";
-import Kora from "./src/category/kora/model/kora-model";
-import { data } from "./src/category/kora/data";
+import db from "./src/startup/db";
 
 // Rest of your Express app configuration
 dotenv.config();
@@ -31,7 +30,6 @@ sequelize
     process.exit(1);
   });
 
-sequelize.sync()
 
 routes(app);
 
