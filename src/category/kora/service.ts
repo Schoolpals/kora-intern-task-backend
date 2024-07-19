@@ -1,21 +1,11 @@
 import Kora from "./model/kora-model";
 
-export const getKoraQuizById = (quesId: number)=> {
-    if(!quesId){
-        throw new Error("quiz not found")
-    }
-  return data.find((quiz) => quiz.id === quesId);
-
-export const getKoraQuizById = (id: any)=> {
-    if(!id){
-        throw new Error("quiz not found")
 
 export const getKoraQuizById = async (id: number) => {
     const quiz = await Kora.findOne({ where: { id } });
     if (!quiz) {
       throw new Error("Quiz not found");
     }
-  
      const question=quiz.questiion
      const options=quiz.option
      const answer=quiz.answer
