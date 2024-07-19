@@ -7,7 +7,7 @@ import Kora from './model/kora-model';
 export const kora = async (req: Request, res: Response): Promise<void> => {
   const { quesId, quizId } = req.body;
     // Fetch the kora quiz by question ID
-    const koraQuiz = await Kora.findOne({ where: { id: quesId } });
+    const koraQuiz = await Kora.findOne({ where: { quesId } });
 
     if (!koraQuiz) {
       res.status(400).json({ message: 'Error in finding quiz' });
@@ -15,7 +15,7 @@ export const kora = async (req: Request, res: Response): Promise<void> => {
     }
 
     // Fetch the quiz by quiz ID
-    const quiz = await Quiz.findOne({ where: { id: quizId } });
+    const quiz = await Quiz.findOne({ where: { quizId } });
 
     if (!quiz) {
       res.status(400).json({ message: 'Quiz not found' });
