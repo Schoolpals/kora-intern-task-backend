@@ -18,7 +18,7 @@ const config = setting[env];
  * @see [Sequelize-Typescript](https://www.npmjs.com/package/sequelize-typescript#model-path-resolving)
  */
 
-const connString = `${config.dialect}://${config.username}:${config.password}@${config.host}/${config.database}`;
+const connString = `${config.dialect}://${config.username}:${config.password}@${config.host}/${config.database}?ssl=true`;
 
 const sequelize = new Sequelize(connString, {
   models: [
