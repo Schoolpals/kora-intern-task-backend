@@ -1,4 +1,3 @@
-
 import dotenv from "dotenv";
 import { NodeEnvironment } from "../utils/types";
 import { Sequelize } from "sequelize-typescript";
@@ -9,10 +8,11 @@ import Token from "../token/model/token-model";
 import Kora from "../category/kora/model/kora-model";
 import KoraInfo from "../category/kora/model/kora-info-model";
 import PiggyInfo from "../category/piggyvest/model/piggyvest-model";
+import QuidaxInfo from "../category/quidax/model";
 
 dotenv.config();
 
-const env = (process.env.NODE_ENV as NodeEnvironment) || "production";
+const env = (process.env.NODE_ENV as NodeEnvironment) || "development";
 const config = setting[env];
 
 /**
@@ -29,7 +29,8 @@ const sequelize = new Sequelize(connString, {
     Token,
     Kora,
     KoraInfo,
-    PiggyInfo
+    PiggyInfo,
+    QuidaxInfo
   ],
 });
 

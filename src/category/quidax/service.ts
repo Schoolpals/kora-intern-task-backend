@@ -1,13 +1,20 @@
-import { quidaxData } from "./quidax-data";
+import QuidaxInfo from "./model";
 
-export const getQuidaxQuizById = (quesId: number)=> {
-    if(!quesId){
-        throw new Error("quiz not found")
-    }
-  return quidaxData.find((quiz) => quiz.id === quesId);
+export const getQuidaxQuizById = async (quesId: number) => {
+  const quiz = await QuidaxInfo.findOne({ where: { quesId } });
+  if (!quiz) {
+    throw new Error("Quiz not found");
+  }
+  return quiz;
+};
 
-  };
-
-  export const getAllQuizIds = (): number[] => {
-    return quidaxData.map((quiz) => quiz.id);
-  };
+export const getAllQuizIds = async (): Promise<number[]> => {
+  try {
+    const quizzes = await QuidaxInfo.findAll();
+    const quizIds = quizzes.map((quiz) => quiz.quesId);
+    return quizIds;
+  } catch (error) {
+    console.error("Error retrieving quiz IDs:", error);
+    throw error;
+  }
+};
