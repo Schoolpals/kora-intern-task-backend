@@ -2,11 +2,12 @@
 
 // import { koraData } from "../../utils/types";
 import { data } from "./data";
-import Kora from "./model/kora-model";
+import KoraInfo from "./model/kora-info-model";
+
 
 
 export const getKoraQuizById = async (quesId: number) => {
-  const quiz = await Kora.findOne({ where: { quesId } });
+  const quiz = await KoraInfo.findOne({ where: { quesId } });
   if (!quiz) {
     throw new Error("Quiz not found");
   }
@@ -15,7 +16,7 @@ export const getKoraQuizById = async (quesId: number) => {
 
 export const getAllQuizIds = async (): Promise<number[]> => {
   try {
-    const quizzes = await Kora.findAll();
+    const quizzes = await KoraInfo.findAll();
     const quizIds = quizzes.map((quiz) => quiz.quesId);
     return quizIds;
   } catch (error) {

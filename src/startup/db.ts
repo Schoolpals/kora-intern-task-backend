@@ -7,6 +7,7 @@ import User from "../users/user-model";
 import Quiz from "../quiz/model/quiz-model";
 import Token from "../token/model/token-model";
 import Kora from "../category/kora/model/kora-model";
+import KoraInfo from "../category/kora/model/kora-info-model";
 
 dotenv.config();
 
@@ -18,14 +19,15 @@ const config = setting[env];
  * @see [Sequelize-Typescript](https://www.npmjs.com/package/sequelize-typescript#model-path-resolving)
  */
 
-const connString = `${config.dialect}://${config.username}:${config.password}@${config.host}/${config.database}?ssl=true`;
+const connString = `${config.dialect}://${config.username}:${config.password}@${config.host}/${config.database}`;
 
 const sequelize = new Sequelize(connString, {
   models: [
     User,
     Quiz,
     Token,
-    Kora
+    Kora,
+    KoraInfo
   ],
 });
 

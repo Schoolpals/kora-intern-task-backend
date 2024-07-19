@@ -2,20 +2,19 @@ import { getKoraQuizById } from './service';
 import { Request, Response } from "express";
 import Quiz from "../../quiz/model/quiz-model";
 import SuccessResponse from '../../utils/success-response';
-import Kora from './model/kora-model';
+import KoraInfo from './model/kora-info-model';
 
 export const kora = async (req: Request, res: Response): Promise<void> => {
-  const { quesId} = req.body;
-   // Fetch the quiz by quiz ID
-  //  const quiz = await Quiz.findOne({ where: { quizId } });
+  const { quesId,quizId} = req.body;
+   const quiz = await Quiz.findOne({ where: { quizId } });
 
-  //  if (!quiz) {
-  //    res.status(400).json({ message: 'Quiz not found' });
-  //    return;
-  //  }
+   if (!quiz) {
+     res.status(400).json({ message: 'Quiz not found' });
+     return;
+   }
 
     // Fetch the kora quiz by question ID
-    const koraQuiz = await Kora.findOne({ where: { quesId } });
+    const koraQuiz = await KoraInfo.findOne({ where: { quesId } });
 
     if (!koraQuiz) {
       res.status(400).json({ message: 'Error in finding quiz' });
@@ -50,7 +49,7 @@ export const kora = async (req: Request, res: Response): Promise<void> => {
           options: item.options,
           answer: item.answer,
         }));
-        await Kora.bulkCreate(koraData, { ignoreDuplicates: true });
+        await KoraInfo.bulkCreate(koraData, { ignoreDuplicates: true });
     
         res.status(200).json({ message: 'Data inserted successfully' });
     };
