@@ -6,6 +6,11 @@ export const getKoraQuizById = (quesId: number)=> {
     }
   return data.find((quiz) => quiz.id === quesId);
 
+export const getKoraQuizById = (id: any)=> {
+    if(!id){
+        throw new Error("quiz not found")
+    }
+  return  data.find((quiz) => quiz.id === id);
   };
 
   export const getAllQuizIds = (): number[] => {
@@ -19,3 +24,6 @@ export const getKoraQuizById = (quesId: number)=> {
 //     console.log("Answer:", question.options[question.answer]);
 //     console.log("----------------");
 //   });
+
+const hmm=  getKoraQuizById(1)
+console.log(hmm)

@@ -10,5 +10,14 @@ const quiz = await Quiz.findOne({where:{quizId}})
 if(quiz){
    const question= getKoraQuizById(quesId)
    SuccessResponse.send(res,question)
+if(quesId >=11){
+    res.status(400).send("Question not Found")
+    return
+}
+const quiz = await Quiz.findOne({where:{quizId}})
+if(quiz){
+   const question = getKoraQuizById(quesId)
+   SuccessResponse.send(res,{question})
+   return
 }
 }

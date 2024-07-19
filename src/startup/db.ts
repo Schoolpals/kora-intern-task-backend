@@ -9,7 +9,7 @@ import Token from "../token/model/token-model";
 
 dotenv.config();
 
-const env = (process.env.NODE_ENV as NodeEnvironment) || "development";
+const env = (process.env.NODE_ENV as NodeEnvironment) || "production";
 const config = setting[env];
 
 /**
