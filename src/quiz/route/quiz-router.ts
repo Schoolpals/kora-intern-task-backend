@@ -4,6 +4,4 @@ const router = express.Router();
 
 router.post("/start",startQuiz);
 
-
-
 export default router

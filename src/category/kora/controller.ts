@@ -1,5 +1,4 @@
 import { getKoraQuizById } from './service';
-
 import { Request, Response } from "express";
 import Quiz from "../../quiz/model/quiz-model";
 import SuccessResponse from '../../utils/success-response';

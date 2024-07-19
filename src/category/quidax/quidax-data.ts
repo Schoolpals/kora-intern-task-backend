@@ -1,4 +1,4 @@
-export const koraData = [
+export const quidaxData = [
     {
       id: 1,
       question: "What year was Quidax founded?",

@@ -4,7 +4,7 @@ import { Express } from "express";
 
 // Any other import that is from our source code should be imported here
 import quizRouter from "../quiz/route/quiz-router"
-import koraRouter from "../category/kora/route/kora-router"
+import categoryRouter from "../category/route/category-router"
 import authRouter from "../auth/route/auth-router"
 
 export default function (app: Express) {
@@ -18,6 +18,6 @@ export default function (app: Express) {
     })
   );
   app.use("/quiz", quizRouter);
-  app.use("/kora", koraRouter);
+  app.use("/category", categoryRouter);
   app.use("/auth",authRouter)
 }
