@@ -1,6 +1,7 @@
-import { DataTypes } from "sequelize";
+
 import {
     Column,
+    DataType,
     Model,
     PrimaryKey,
     Table,
@@ -18,7 +19,7 @@ import {
     question!:string;
 
     @Column({
-      type: DataTypes.ARRAY(DataTypes.STRING),
+      type: DataType.ARRAY(DataType.STRING),
     })
     options!:string[]
 
