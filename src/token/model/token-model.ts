@@ -7,11 +7,11 @@ import {
   DataType,
 } from "sequelize-typescript";
 
-@Table
+@Table({ tableName: "token" })
 class Token extends Model {
  
   @Column
-  username!: string;
+  userName!: string;
 
   @PrimaryKey
   @Unique
