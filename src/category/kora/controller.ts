@@ -7,7 +7,6 @@ import Kora from './model/kora-model';
 export const kora = async (req: Request, res: Response): Promise<void> => {
   const { quesId, quizId } = req.body;
 
-  try {
     // Find the question in the Kora table
     const koraQuestion = await Kora.findOne({ where: { id: quesId } });
 
@@ -17,8 +16,7 @@ export const kora = async (req: Request, res: Response): Promise<void> => {
     }
 
     // Find the quiz in the Quiz table
-    const quiz = await Quiz.findOne({ where: { id: quizId } });
-
+    const quiz = await Quiz.findOne({ where:{id: quizId} });
     if (!quiz) {
       res.status(400).json({ message: 'Quiz not found' });
       return;
@@ -26,7 +24,6 @@ export const kora = async (req: Request, res: Response): Promise<void> => {
 
     // Fetch additional question details if necessary
     const question = await getKoraQuizById(quesId);
-
     if (!question) {
       res.status(400).json({ message: 'Question not found' });
       return;
@@ -34,18 +31,16 @@ export const kora = async (req: Request, res: Response): Promise<void> => {
 
     // Send success response
     SuccessResponse.send(res, { question });
-  } catch (error) {
-    console.error('Error occurred:', error);
-    res.status(500).json({ message: 'Internal server error' });
-  }
 };
 
 export const storeKora = async(req:Request,res:Response):Promise<void>=>{
 const { data } = req.body;
+
   if (!data || !Array.isArray(data)) {
     res.status(400).json({ message: 'Invalid data format' });
     return;
   }
+
     const koraData = data.map((item: any) => ({
       id: item.id,
       question: item.question,
