@@ -6,12 +6,11 @@ export const getKoraQuizById = async (id: number) => {
     if (!quiz) {
       throw new Error("Quiz not found");
     }
-     const question=quiz.questiion
-     const options=quiz.option
+     const question=quiz.question
+     const options=quiz.options
      const answer=quiz.answer
     return { question, options, answer };
   }
-
 
 export const getAllQuizIds = async (): Promise<number[]> => {
   try {
