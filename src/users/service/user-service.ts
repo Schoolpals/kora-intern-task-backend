@@ -1,4 +1,4 @@
-import User from "../users/user-model";
+import User from "../user-model";
 
 
 export const findByUsername = async (userName: string): Promise<User | null> => {
