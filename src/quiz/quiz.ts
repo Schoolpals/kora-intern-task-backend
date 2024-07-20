@@ -14,10 +14,10 @@ export const startQuiz = async (req: Request, res: Response): Promise<void> => {
   }
   const { username } = validation.value;
   const quizId = generateQuizId();
-  const quiz = await QuizInfo.create({
+ await QuizInfo.create({
     quizId,
   });
-  SuccessResponse.send(res, quiz, username);
+  SuccessResponse.send(res, quizId, username);
 };
 
 export const displayScore = async (
