@@ -5,7 +5,8 @@ import SuccessResponse from "../../utils/success-response";
 import KoraInfo from "./model/kora-info-model";
 
 export const kora = async (req: Request, res: Response): Promise<void> => {
-  const { quesId, quizId } = req.body;
+  const { quesId, quizId } = req.params;
+  const parsedQuesId = parseInt(quesId, 10);
   const quiz = await Quiz.findOne({ where: { quizId } });
 
   if (!quiz) {
@@ -18,7 +19,7 @@ export const kora = async (req: Request, res: Response): Promise<void> => {
     res.status(400).json({ message: "Error in finding quiz" });
     return;
   }
-  const question = await getKoraQuizById(quesId);
+  const question = await getKoraQuizById(parsedQuesId);
   if (!question) {
     res.status(400).json({ message: "Question not found" });
     return;
