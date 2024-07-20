@@ -7,6 +7,8 @@ import QuizInfo from "../../quiz/model/quiz-info-model";
 export const quidax = async (req: Request, res: Response): Promise<void> => {
   const { quesId, quizId } = req.query;
   const parsedQuesId=parseInt(quesId as string, 10)
+
+  const { quesId, quizId } = req.body;
   const quiz = await QuizInfo.findOne({ where: { quizId } });
 
   if (!quiz) {
