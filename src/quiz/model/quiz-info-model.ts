@@ -3,6 +3,7 @@ import {
   AllowNull,
     Column,
     Model,
+    PrimaryKey,
     Table,
 
   } from "sequelize-typescript";
@@ -10,6 +11,13 @@ import {
   
   @Table({ tableName: "quiz_info" })
   class QuizInfo extends Model {
+    @PrimaryKey
+    @Column({
+      type: DataTypes.INTEGER,
+      autoIncrement: true
+    })
+    id!: number;
+
     @Column({ defaultValue: DataTypes.UUIDV4 })
     quizId!: string;
 
