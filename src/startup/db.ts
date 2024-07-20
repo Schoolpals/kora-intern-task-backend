@@ -3,12 +3,13 @@ import { NodeEnvironment } from "../utils/types";
 import { Sequelize } from "sequelize-typescript";
 import { setting } from "../config/db";
 import User from "../users/user-model";
-import Quiz from "../quiz/model/quiz-model";
+
 import Token from "../token/model/token-model";
-import Kora from "../category/kora/model/kora-model";
+
 import KoraInfo from "../category/kora/model/kora-info-model";
 import PiggyInfo from "../category/piggyvest/model/piggyvest-model";
 import QuidaxInfo from "../category/quidax/model";
+import QuizInfo from "../quiz/model/quiz-info-model";
 
 dotenv.config();
 
@@ -25,9 +26,8 @@ const connString = `${config.dialect}://${config.username}:${config.password}@${
 const sequelize = new Sequelize(connString, {
   models: [
     User,
-    Quiz,
+    QuizInfo,
     Token,
-    Kora,
     KoraInfo,
     PiggyInfo,
     QuidaxInfo
