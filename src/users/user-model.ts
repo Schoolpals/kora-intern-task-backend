@@ -1,11 +1,13 @@
 import {
     BeforeSave,
     Column,
+    HasMany,
     IsEmail,
     Model,
     Table,
     Unique,
   } from "sequelize-typescript";
+import UserQuiz from "../category/model/category_model";
 
   @Table
   class User extends Model {
@@ -26,6 +28,9 @@ import {
   
     @Column
     declare password: string;
+
+    @HasMany(() => UserQuiz)
+    userQuizzes!: UserQuiz[];
   
     @BeforeSave
     static async formatEmail(user: User) {
