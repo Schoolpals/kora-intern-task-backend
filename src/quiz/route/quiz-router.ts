@@ -1,6 +1,5 @@
 import { isAuthenticated } from './../../middleware/auth';
 import { displayScore, userUpload, displayUserQuiz } from './../quiz';
-// import { upload } from './../quiz';
 import express from "express";
 import { startQuiz } from "../quiz";
 const router = express.Router();
