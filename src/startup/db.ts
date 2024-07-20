@@ -11,6 +11,7 @@ import PiggyInfo from "../category/piggyvest/model/piggyvest-model";
 
 import QuizInfo from "../quiz/model/quiz-info-model";
 import UserQuiz from "../category/model/category_model";
+import UploadInfo from "../category/model/user_quiz_model";
 
 dotenv.config();
 
@@ -32,7 +33,8 @@ const sequelize = new Sequelize(connString, {
     KoraInfo,
     PiggyInfo,
     QuizInfo,
-    UserQuiz
+    UserQuiz,
+    UploadInfo
   ],
 });
 

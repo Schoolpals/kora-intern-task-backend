@@ -1,4 +1,4 @@
-import { DataTypes } from 'sequelize';
+import { DataTypes } from "sequelize";
 import {
   Column,
   Model,
@@ -7,40 +7,40 @@ import {
   ForeignKey,
   BelongsTo,
 } from "sequelize-typescript";
-import User from '../../users/user-model';
-import Category from '../model/category_model';
+import User from "../../users/user-model";
+import Category from "../model/category_model";
 
-@Table({ tableName: "quidax_info" })
-class QuidaxInfo extends Model {
+@Table({ tableName: "upload_info" })
+class UploadInfo extends Model {
   @PrimaryKey
   @Column({
     type: DataTypes.INTEGER,
-    autoIncrement: true
+    autoIncrement: true,
   })
   id!: number;
 
-  @Column
-  quesId!: number
+  @Column({ type: DataTypes.UUID, allowNull: false })
+  quesId!: number;
 
   @Column({
-    type: DataTypes.STRING
+    type: DataTypes.STRING,
   })
   question!: string;
 
   @Column({
-    type: DataTypes.JSON
+    type: DataTypes.JSON,
   })
-  options!: { option: string; isCorrect: boolean }[]
+  options!: { option: string; isCorrect: boolean }[];
 
   @Column({
-    type: DataTypes.INTEGER
+    type: DataTypes.INTEGER,
   })
   answer!: number;
 
   @ForeignKey(() => User)
   @Column({
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: false,
   })
   userId!: number;
 
@@ -50,12 +50,14 @@ class QuidaxInfo extends Model {
   @ForeignKey(() => Category)
   @Column({
     type: DataTypes.UUID,
-    allowNull: false
+    allowNull: false,
   })
   categoryId!: string;
+
+  
 
   @BelongsTo(() => Category)
   category!: Category;
 }
 
-export default QuidaxInfo;
+export default UploadInfo;

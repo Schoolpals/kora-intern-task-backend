@@ -6,12 +6,12 @@ import {
     Table,
     ForeignKey,
     BelongsTo,
-    HasMany
-
+    HasMany,
 } from "sequelize-typescript";
 
 import User from "../../users/user-model";
 import Quiz from "../../quiz/model/quiz-info-model";
+import UploadInfo from "./user_quiz_model";
 
 @Table({ tableName: "user_quizzes" })
 class UserQuiz extends Model {
@@ -51,6 +51,10 @@ class UserQuiz extends Model {
 
   @BelongsTo(() => User)
   user!: User;
+
+  @HasMany(() => UploadInfo)
+  userUpload!: UploadInfo[];
+
 
   @BelongsTo(() => Quiz)
   quiz!: Quiz;
