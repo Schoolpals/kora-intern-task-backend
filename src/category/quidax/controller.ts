@@ -5,20 +5,21 @@ import SuccessResponse from "../../utils/success-response";
 import QuidaxInfo from "./model";
 
 export const quidax = async (req: Request, res: Response): Promise<void> => {
-  const { quesId, quizId } = req.body;
+  const { quesId, quizId } = req.query;
+  const parsedQuesId=parseInt(quesId as string, 10)
   const quiz = await Quiz.findOne({ where: { quizId } });
 
   if (!quiz) {
     res.status(400).json({ message: "Quiz not found" });
     return;
   }
-  const quidaxQuiz = await QuidaxInfo.findOne({ where: { quesId } });
+  const quidaxQuiz = await QuidaxInfo.findOne({ where: { quesId: parsedQuesId } });
 
   if (!quidaxQuiz) {
     res.status(400).json({ message: "Error in finding quiz" });
     return;
   }
-  const question = await getQuidaxQuizById(quesId);
+  const question = await getQuidaxQuizById(parseInt(quesId as string, 10))
   if (!question) {
     res.status(400).json({ message: "Question not found" });
     return;
