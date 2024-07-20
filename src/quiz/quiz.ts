@@ -1,4 +1,3 @@
-// import { createKoraQuiz } from './../category/kora/service';
 import { validateUsername } from "./validator/quiz-validator";
 import { Request, Response } from "express";
 import { generateQuizId } from "../utils/generate-quiz-id";
@@ -13,8 +12,10 @@ export const startQuiz = async (req: Request, res: Response): Promise<void> => {
   }
   const { username } = validation.value;
   const quizId = generateQuizId();
- await QuizInfo.create({
+
+  await QuizInfo.create({
     quizId,
+    score: 0,
   });
   SuccessResponse.send(res, quizId, username);
 };
@@ -27,7 +28,7 @@ export const displayScore = async (
   const { score } = req.body;
   const quiz = await QuizInfo.findOne({ where: { quizId } });
   if (quiz) {
-    const userScore = await QuizInfo.create({ score });
+    const userScore = await QuizInfo.update({ score }, { where: { quizId } });
     SuccessResponse.send(res, userScore);
     return;
   }
