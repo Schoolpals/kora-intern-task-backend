@@ -2,7 +2,6 @@
 import { validateUsername } from "./validator/quiz-validator";
 import { Request, Response } from "express";
 import { generateQuizId } from "../utils/generate-quiz-id";
-
 import SuccessResponse from "../utils/success-response";
 import QuizInfo from "./model/quiz-info-model";
 
