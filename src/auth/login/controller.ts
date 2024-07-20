@@ -27,6 +27,6 @@ export const signIn = async (req: Request, res: Response) => {
       return res.status(400).send({ error: "Username or Password Incorrect" });
     }
     const token = await generateToken(userName);
-    const withoutPassword = _.pick(user, ["UserName", "email"]);
+    const withoutPassword = _.pick(user, ["userName", "email"]);
     SuccessResponse.send(res,{data:{token, ...withoutPassword }});
   };
