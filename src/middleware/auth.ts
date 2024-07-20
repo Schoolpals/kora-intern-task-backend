@@ -1,4 +1,5 @@
-import { findByUsername } from "../users/service/user-service";
+
+import { findByUsername } from './../service/user-service';
 import { Response, NextFunction, Request } from "express";
 import dotenv from "dotenv";
 import { UserAttributes } from "../utils/types";
