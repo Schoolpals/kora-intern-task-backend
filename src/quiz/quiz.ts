@@ -34,3 +34,5 @@ export const displayScore = async (
   }
   res.status(400).json({ message: "User not found" });
 };
+
+
