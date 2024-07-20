@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import {
+  AllowNull,
     Column,
     Model,
     Table,
@@ -12,6 +13,8 @@ import {
     @Column({ defaultValue: DataTypes.UUIDV4 })
     quizId!: string;
 
+
+   @AllowNull(true)
     @Column({ defaultValue: DataTypes.INTEGER })
     score!:number
 
