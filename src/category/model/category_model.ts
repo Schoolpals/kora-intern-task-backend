@@ -1,11 +1,13 @@
 import { DataTypes } from "sequelize";
 import {
-  Column,
-  Model,
-  PrimaryKey,
-  Table,
-  ForeignKey,
-  BelongsTo,
+    Column,
+    Model,
+    PrimaryKey,
+    Table,
+    ForeignKey,
+    BelongsTo,
+    HasMany
+
 } from "sequelize-typescript";
 
 import User from "../../users/user-model";
