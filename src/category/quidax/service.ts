@@ -8,13 +8,4 @@ export const getQuidaxQuizById = async (quesId: number) => {
   return quiz;
 };
 
-export const getAllQuizIds = async (): Promise<number[]> => {
-  try {
-    const quizzes = await QuidaxInfo.findAll();
-    const quizIds = quizzes.map((quiz) => quiz.quesId);
-    return quizIds;
-  } catch (error) {
-    console.error("Error retrieving quiz IDs:", error);
-    throw error;
-  }
-};
+

@@ -8,8 +8,9 @@ import Token from "../token/model/token-model";
 
 import KoraInfo from "../category/kora/model/kora-info-model";
 import PiggyInfo from "../category/piggyvest/model/piggyvest-model";
-import QuidaxInfo from "../category/quidax/model";
+
 import QuizInfo from "../quiz/model/quiz-info-model";
+import UserQuiz from "../category/model/category_model";
 
 dotenv.config();
 
@@ -30,7 +31,8 @@ const sequelize = new Sequelize(connString, {
     Token,
     KoraInfo,
     PiggyInfo,
-    QuidaxInfo
+    QuizInfo,
+    UserQuiz
   ],
 });
 
