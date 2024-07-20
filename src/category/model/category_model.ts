@@ -5,7 +5,8 @@ import {
     PrimaryKey,
     Table,
     ForeignKey,
-    BelongsTo
+    BelongsTo,
+    HasMany
 } from "sequelize-typescript";
 
 import User from "../../users/user-model"
@@ -33,12 +34,6 @@ class UserQuiz extends Model {
         allowNull: false
     })
     category!: string;
-
-    @Column({
-        type: DataTypes.STRING,
-        allowNull: false
-    })
-    quizLink!: string;
 
     @ForeignKey(() => Quiz)
     @Column({
