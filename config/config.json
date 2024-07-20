@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "quiz_app_u9zt_user",
+    "password": "isBeV7zQjWSpJSxsQCjtpuKrEFW1M8Cf",
+    "database": "quiz_app_u9zt",
+    "host": "dpg-cqcnn7lds78s738q64b0-a",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "quiz_app_u9zt_user",
+    "password": "isBeV7zQjWSpJSxsQCjtpuKrEFW1M8Cf",
+    "database": "quiz_app_u9zt",
+    "host": "dpg-cqcnn7lds78s738q64b0-a",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "quiz_app_u9zt_user",
+    "password": "isBeV7zQjWSpJSxsQCjtpuKrEFW1M8Cf",
+    "database": "quiz_app_u9zt",
+    "host": "dpg-cqcnn7lds78s738q64b0-a",
+    "dialect": "postgres"
+  }
+}
