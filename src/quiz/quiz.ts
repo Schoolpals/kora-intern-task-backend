@@ -19,12 +19,14 @@ const quiz= await Quiz.create({
 SuccessResponse.send(res,quiz,username)
 }
 
-
-// export const upload=async(req:Request,res:Response):Promise<void>=>{
-//   const{quesId,options,answer,question}=req.body
-
-// const createdQuiz= await createKoraQuiz({
-//   quesId,options,answer,question
-// })
-// SuccessResponse.send(res,createdQuiz)
-// }
+export const displayScore=async(req:Request,res:Response):Promise<void>=>{
+     const { quizId } = req.query;
+     const {score}=req.body
+    const quiz = await Quiz.findOne({ where: { quizId } });
+    if (quiz) {
+  const userScore=await Quiz.create({score})
+  SuccessResponse.send(res,userScore)
+      return;
+    }
+    res.status(400).json({ message: "User not found" });
+}

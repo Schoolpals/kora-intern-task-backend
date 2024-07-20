@@ -11,6 +11,10 @@ import {
   class Quiz extends Model {
     @Column({ defaultValue: DataTypes.UUIDV4 })
     quizId!: string;
+
+    @Column({ defaultValue: DataTypes.INTEGER })
+    score!:number
+
   
   }
   
