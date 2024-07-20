@@ -1,12 +1,12 @@
 import { getQuidaxQuizById } from "./service";
 import { Request, Response } from "express";
-import Quiz from "../../quiz/model/quiz-model";
 import SuccessResponse from "../../utils/success-response";
 import QuidaxInfo from "./model";
+import QuizInfo from "../../quiz/model/quiz-info-model";
 
 export const quidax = async (req: Request, res: Response): Promise<void> => {
   const { quesId, quizId } = req.body;
-  const quiz = await Quiz.findOne({ where: { quizId } });
+  const quiz = await QuizInfo.findOne({ where: { quizId } });
 
   if (!quiz) {
     res.status(400).json({ message: "Quiz not found" });
