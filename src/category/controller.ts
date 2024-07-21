@@ -28,6 +28,5 @@ export const createCategory = async (
     quizId,
     userId
   });
-
-  SuccessResponse.send(res,newCategory );
+  SuccessResponse.send(res, { data: newCategory });
 };
