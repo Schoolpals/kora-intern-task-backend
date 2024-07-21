@@ -4,6 +4,7 @@ import ErrorResponse from "../utils/error-response";
 import Error404Response from "../utils/error-response";
 import { generateQuizId } from "../utils/generate-quiz-id";
 import UserQuiz from "./model/category_model";
+import SuccessResponse from "../utils/success-response";
 
 export const createCategory = async (
   req: Request,
@@ -22,11 +23,17 @@ export const createCategory = async (
     return;
   }
   const newCategory = await UserQuiz.create({
+    userId,
     categoryName,
     categoryId,
     quizId,
-    userId,
   });
-  await newCategory.save()
-  res.status(200).json(newCategory.categoryName,newCategory.categoryId,newCategory.quizId );
+  const response = {
+    userId: newCategory.userId,
+    categoryName: newCategory.categoryName,
+    categoryId: newCategory.categoryId,
+    quizId: newCategory.quizId,
+  };
+  await newCategory.save();
+  SuccessResponse.send(res, response);
 };
