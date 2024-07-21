@@ -51,10 +51,10 @@ class UploadInfo extends Model {
   })
   categoryId!: string;
 
-  
 
-  @BelongsTo(() => UserQuiz)
-  category!: UserQuiz;
+  static associate(models: any) {
+   UserQuiz.belongsTo(models.UserQuiz, { foreignKey: 'categoryId', as: 'category' });
+}
 }
 
 export default UploadInfo;
