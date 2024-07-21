@@ -24,19 +24,13 @@ class UserQuiz extends Model {
   id!: number;
 
   @ForeignKey(() => User)
-  @Column({
-    defaultValue: DataTypes.INTEGER
-  })
+  @Column
   userId!: number;
 
-  @Column({
-    defaultValue: DataTypes.STRING,
-  })
+  @Column
   categoryName!: string;
 
-  @Column({
-    defaultValue: DataTypes.UUIDV4 
-  })
+  @Column
   categoryId!: string;
 
  
