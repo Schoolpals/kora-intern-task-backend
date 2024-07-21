@@ -30,6 +30,7 @@ export const createCategory = async (
     categoryName,
     categoryId,
     quizId,
+    userId
   });
 
   SuccessResponse.send(res, { message: { newCategory } });

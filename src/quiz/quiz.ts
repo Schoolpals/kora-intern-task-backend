@@ -67,6 +67,7 @@ export const userUpload = async (
 
   if (userId) {
     const newUploadInfo = await UploadInfo.create({
+      userId,
       categoryId,
       quesId,
       question,
