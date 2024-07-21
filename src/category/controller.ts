@@ -5,7 +5,7 @@ import {generateQuizId} from "../utils/generate-quiz-id"
 import ErrorResponse from "../utils/error-response";
 import Error404Response from "../utils/error-response";
 import UserQuiz from "./model/category_model";
-import SuccessResponse from "../utils/success-response";
+import { findByUserId } from "../users/service/user-service";
 
 export const createCategory = async (req: Request, res: Response): Promise<void> => {
     const userId = req.user?.id
@@ -28,4 +28,4 @@ export const createCategory = async (req: Request, res: Response): Promise<void>
       quizId
     });
     SuccessResponse.send(res, {message:{newCategory,categoryId,quizId}});
-
+  }
