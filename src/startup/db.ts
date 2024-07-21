@@ -35,7 +35,7 @@ const sequelize = new Sequelize(connString, {
     PiggyInfo,
     QuizInfo,
     UserQuiz,
-    UploadInfo
+    UploadInfo,
   ],
 });
 
