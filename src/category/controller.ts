@@ -29,5 +29,5 @@ export const createCategory = async (
     userId
   });
 
-  SuccessResponse.send(res, { message: { newCategory } });
+  SuccessResponse.send(res,newCategory );
 };
