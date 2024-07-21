@@ -50,10 +50,6 @@ class UserQuiz extends Model {
   })
   quizId!: string;
 
-  @BelongsTo(() => User)
-  user!: User;
-
-
 
 }
 
