@@ -9,7 +9,7 @@ export const createCategory = async (
   req: Request,
   res: Response
 ): Promise<void> => {
-  const { categoryName } = req.body;
+  const categoryName = JSON.stringify(req.body.categoryName);
   const categoryId = generateCategoryId();
   const quizId = generateQuizId();
   if (!categoryName) {
