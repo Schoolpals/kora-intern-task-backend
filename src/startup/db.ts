@@ -8,6 +8,7 @@ import KoraInfo from "../category/kora/model/kora-info-model";
 import PiggyInfo from "../category/piggyvest/model/piggyvest-model";
 import QuizInfo from "../quiz/model/quiz-info-model";
 import UserQuiz from "../category/model/category_model";
+import QuidaxInfo from "../category/quidax/model";
 // import UploadInfo from "../category/model/user_quiz_model";
 
 
@@ -30,7 +31,7 @@ const sequelize = new Sequelize(connString, {
     Token,
     KoraInfo,
     PiggyInfo,
-    QuizInfo,
+    QuidaxInfo,
     UserQuiz,
     // UploadInfo,
   ],
