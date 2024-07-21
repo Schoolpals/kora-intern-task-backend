@@ -32,7 +32,7 @@ const sequelize = new Sequelize(connString, {
     KoraInfo,
     PiggyInfo,
     QuidaxInfo,
-    UserQuiz,
+    UserQuiz
     // UploadInfo,
   ],
 });
