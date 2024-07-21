@@ -1,3 +1,4 @@
+
 import { Request, Response } from "express";
 import { generateCategoryId } from "../utils/generate-category-id";
 import ErrorResponse from "../utils/error-response";
@@ -10,7 +11,7 @@ export const createCategory = async (
   req: Request,
   res: Response
 ): Promise<void> => {
-  const { categoryName } = req.body;
+  const categoryName = req.body.categoryName as string;
   const categoryId = generateCategoryId();
   const quizId = generateQuizId();
   if (!categoryName) {
@@ -22,6 +23,7 @@ export const createCategory = async (
     Error404Response.send(res, { error: "User Not Found" });
     return;
   }
+
   const newCategory = await UserQuiz.create({
     userId,
     categoryName,
@@ -34,6 +36,5 @@ export const createCategory = async (
     categoryId: newCategory.categoryId,
     quizId: newCategory.quizId,
   };
-  await newCategory.save();
   SuccessResponse.send(res, response);
 };
