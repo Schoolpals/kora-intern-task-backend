@@ -8,7 +8,7 @@ import {
   BelongsTo,
 } from "sequelize-typescript";
 import User from "../../users/user-model";
-import Category from "../model/category_model";
+import UserQuiz from "../model/category_model";
 
 @Table({ tableName: "upload_info" })
 class UploadInfo extends Model {
@@ -44,20 +44,18 @@ class UploadInfo extends Model {
   })
   userId!: number;
 
-  @BelongsTo(() => User)
-  user!: User;
-
-  @ForeignKey(() => Category)
+  @ForeignKey(() => UserQuiz)
   @Column({
     type: DataTypes.UUID,
     allowNull: false,
   })
   categoryId!: string;
 
-  
+  @BelongsTo(() => User)
+  user!: User;
 
-  @BelongsTo(() => Category)
-  category!: Category;
+  @BelongsTo(() => UserQuiz)
+  category!: UserQuiz;
 }
 
 export default UploadInfo;
