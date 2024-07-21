@@ -50,6 +50,11 @@ class UserQuiz extends Model {
   })
   quizId!: string;
 
+  @BelongsTo(() => User,"userId")
+  user!: User;
+
+  @HasMany(() => UploadInfo , "categoryId")
+  userQuizzes!: UploadInfo[];
 
 }
 

@@ -51,9 +51,9 @@ class UploadInfo extends Model {
   })
   categoryId!: string;
 
-  
+  @BelongsTo(() => UserQuiz,"categoryId")
+  category!: UserQuiz;
 
-  
 }
 
 export default UploadInfo;
