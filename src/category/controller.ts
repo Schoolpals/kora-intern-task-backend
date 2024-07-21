@@ -9,7 +9,7 @@ export const createCategory = async (
   req: Request,
   res: Response
 ): Promise<void> => {
-  const categoryName = JSON.stringify(req.body.categoryName);
+  const { categoryName } = req.body;
   const categoryId = generateCategoryId();
   const quizId = generateQuizId();
   if (!categoryName) {
@@ -17,16 +17,15 @@ export const createCategory = async (
     return;
   }
   const userId = req.user?.id;
-  if (userId) {
-    await UserQuiz.create({
-      categoryName,
-      categoryId,
-      quizId,
-      userId,
-    });
-    res.status(200).json({ categoryName, categoryId, quizId });
+  if (!userId) {
+    Error404Response.send(res, { error: "User Not Found" });
     return;
   }
-
-  Error404Response.send(res, { error: "User Not Found" });
+  const newCategory = await UserQuiz.create({
+    categoryName,
+    categoryId,
+    quizId,
+    userId,
+  });
+  res.status(200).json({ newCategory });
 };
