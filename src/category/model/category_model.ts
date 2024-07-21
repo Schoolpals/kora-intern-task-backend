@@ -20,33 +20,28 @@ class UserQuiz extends Model {
   @Column({
     type: DataTypes.INTEGER,
     autoIncrement: true,
-    allowNull: false,
   })
   id!: number;
 
   @ForeignKey(() => User)
   @Column({
-    type: DataTypes.INTEGER,
-    allowNull: false,
+    type: DataTypes.INTEGER
   })
   userId!: number;
 
   @Column({
     type: DataTypes.STRING,
-    allowNull: false,
   })
   categoryName!: string;
 
   @Column({
-    type: DataTypes.UUID,
-    allowNull: false,
+    defaultValue: DataTypes.UUIDV4 
   })
   categoryId!: string;
 
  
   @Column({
-    type: DataTypes.UUID,
-    allowNull: false,
+    defaultValue: DataTypes.UUIDV4 
   })
   quizId!: string;
 

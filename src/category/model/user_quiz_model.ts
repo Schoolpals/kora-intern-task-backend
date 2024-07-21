@@ -19,8 +19,8 @@ class UploadInfo extends Model {
   })
   id!: number;
 
-  @Column({ type: DataTypes.UUID, allowNull: false })
-  quesId!: number;
+  @Column({ type: DataTypes.UUID })
+  quesId!: string;
 
   @Column({
     type: DataTypes.STRING,
@@ -40,14 +40,12 @@ class UploadInfo extends Model {
 
   @Column({
     type: DataTypes.INTEGER,
-    allowNull: false,
   })
   userId!: number;
 
   @ForeignKey(() => UserQuiz)
   @Column({
     type: DataTypes.UUID,
-    allowNull: false,
   })
   categoryId!: string;
 
