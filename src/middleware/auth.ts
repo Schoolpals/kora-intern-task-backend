@@ -5,8 +5,6 @@ import dotenv from "dotenv";
 import { UserAttributes } from "../utils/types";
 import { findUserToken } from "../token/token-service";
 import { UnAuthorizedException } from "../utils/unauthorized.exception";
-
-
 dotenv.config();
 
 export const isAuthenticated = async (

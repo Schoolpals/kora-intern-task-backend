@@ -1,4 +1,4 @@
-import { findByUsername } from './../../service/user-service';
+import { findByUsername } from '../../users/service/user-service';
 import bcrypt from "bcrypt";
 import { Request, Response } from "express";
 import _ from "lodash";

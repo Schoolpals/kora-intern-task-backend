@@ -54,8 +54,6 @@ class UploadInfo extends Model {
   })
   categoryId!: string;
 
-  
-
   @BelongsTo(() => Category)
   category!: Category;
 }

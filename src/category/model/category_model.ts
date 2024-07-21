@@ -1,51 +1,39 @@
 import { DataTypes } from "sequelize";
 import {
-    Column,
-    Model,
-    PrimaryKey,
-    Table,
-    ForeignKey,
-    BelongsTo,
-    HasMany,
+  Column,
+  Model,
+  PrimaryKey,
+  Table,
+  ForeignKey,
+  BelongsTo,
+  HasMany,
 } from "sequelize-typescript";
 
 import User from "../../users/user-model";
-import Quiz from "../../quiz/model/quiz-info-model";
-import UploadInfo from "./user_quiz_model";
+import UploadInfo from "../model/user_quiz_model"; 
 
 @Table({ tableName: "user_quizzes" })
 class UserQuiz extends Model {
   @PrimaryKey
   @Column({
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
-    allowNull: false,
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
   })
-  id!: number;
+  categoryId!: string;
 
   @ForeignKey(() => User)
   @Column({
     type: DataTypes.INTEGER,
-    allowNull: false,
   })
   userId!: number;
 
   @Column({
     type: DataTypes.STRING,
-    allowNull: false,
   })
   categoryName!: string;
 
   @Column({
     type: DataTypes.UUID,
-    allowNull: false,
-  })
-  categoryId!: string;
-
-  @ForeignKey(() => Quiz)
-  @Column({
-    type: DataTypes.UUID,
-    allowNull: false,
   })
   quizId!: string;
 
@@ -55,9 +43,9 @@ class UserQuiz extends Model {
   @HasMany(() => UploadInfo)
   userUpload!: UploadInfo[];
 
-
-  @BelongsTo(() => Quiz)
-  quiz!: Quiz;
 }
 
 export default UserQuiz;
+
+
+
