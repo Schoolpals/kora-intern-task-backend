@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 
-export function generateQuizId(): string {
+export const generateQuizId= () :string => {
     return uuidv4();
   }
   

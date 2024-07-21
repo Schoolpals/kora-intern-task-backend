@@ -7,6 +7,7 @@ import SuccessResponse from "../utils/success-response";
 import ErrorResponse from "../utils/error-response";
 import User from "../users/user-model";
 import { generateToken } from "../token/token-service";
+import { findByUsername } from "../users/service/user-service";
 
 export const signUp = async (req: Request, res: Response): Promise<void> => {
   let { email, password,userName } = req.body;
@@ -19,6 +20,11 @@ export const signUp = async (req: Request, res: Response): Promise<void> => {
   const user = await findByEmail(email);
   if (user) {
     ErrorResponse.send(res, { error: "User already Exists. Sign In instead." });
+    return;
+  }
+  const username = await findByUsername(userName);
+  if (username) {
+    ErrorResponse.send(res, { error: "UserName already Exists." });
     return;
   }
   const hashedPassword = await bcrypt.hash(password, 10);

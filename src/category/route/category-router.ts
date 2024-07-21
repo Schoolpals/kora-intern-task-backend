@@ -1,6 +1,6 @@
+import express from "express";
 import { piggy, storePiggy } from './../piggyvest/controller';
 import { kora, storeKora } from '../kora/controller';
-import express from "express";
 import { quidax, storeQuidax} from '../quidax/controller';
 import { isAuthenticated } from '../../middleware/auth';
 import { createCategory } from '../controller';

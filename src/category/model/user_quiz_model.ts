@@ -1,57 +1,62 @@
-// import { DataTypes } from "sequelize";
-// import {
-//   Column,
-//   Model,
-//   PrimaryKey,
-//   Table,
-//   ForeignKey,
-//   BelongsTo,
-// } from "sequelize-typescript";
-// import UserQuiz from "./category_model";
+import { DataTypes } from "sequelize";
+import {
+  Column,
+  Model,
+  PrimaryKey,
+  Table,
+  ForeignKey,
+  BelongsTo,
+} from "sequelize-typescript";
+import User from "../../users/user-model";
+import Category from "../model/category_model";
 
+@Table({ tableName: "upload_info" })
+class UploadInfo extends Model {
+  @PrimaryKey
+  @Column({
+    type: DataTypes.INTEGER,
+    autoIncrement: true,
+  })
+  id!: number;
 
-// @Table({ tableName: "upload_info" })
-// class UploadInfo extends Model {
-//   @PrimaryKey
-//   @Column({
-//     type: DataTypes.INTEGER,
-//     autoIncrement: true,
-//   })
-//   id!: number;
+  @Column({ type: DataTypes.UUID, allowNull: false })
+  quesId!: number;
 
-//   @Column({ type: DataTypes.UUID })
-//   quesId!: string;
+  @Column({
+    type: DataTypes.STRING,
+  })
+  question!: string;
 
-//   @Column({
-//     type: DataTypes.STRING,
-//   })
-//   question!: string;
+  @Column({
+    type: DataTypes.JSON,
+  })
+  options!: { option: string; isCorrect: boolean }[];
 
-//   @Column({
-//     type: DataTypes.JSON,
-//   })
-//   options!: { option: string; isCorrect: boolean }[];
+  @Column({
+    type: DataTypes.INTEGER,
+  })
+  answer!: number;
 
-//   @Column({
-//     type: DataTypes.INTEGER,
-//   })
-//   answer!: number;
+  @ForeignKey(() => User)
+  @Column({
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  })
+  userId!: number;
 
+  @BelongsTo(() => User)
+  user!: User;
 
-//   @Column({
-//     type: DataTypes.INTEGER,
-//   })
-//   userId!: number;
+  @ForeignKey(() => Category)
+  @Column({
+    type: DataTypes.UUID,
+    allowNull: false,
+  })
+  categoryId!: string;
 
-//   @ForeignKey(() => UserQuiz)
-//   @Column({
-//     type: DataTypes.UUID,
-//   })
-//   categoryId!: string;
+  @BelongsTo(() => Category)
+  category!: Category;
+}
 
-//   @BelongsTo(() => UserQuiz,"categoryId")
-//   category!: UserQuiz;
+export default UploadInfo;
 
-// }
-
-// export default UploadInfo;

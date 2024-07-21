@@ -3,12 +3,9 @@ import { NodeEnvironment } from "../utils/types";
 import { Sequelize } from "sequelize-typescript";
 import { setting } from "../config/db";
 import User from "../users/user-model";
-
 import Token from "../token/model/token-model";
-
 import KoraInfo from "../category/kora/model/kora-info-model";
 import PiggyInfo from "../category/piggyvest/model/piggyvest-model";
-
 import QuizInfo from "../quiz/model/quiz-info-model";
 import UserQuiz from "../category/model/category_model";
 // import UploadInfo from "../category/model/user_quiz_model";
