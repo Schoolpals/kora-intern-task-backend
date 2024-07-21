@@ -9,7 +9,7 @@ import User from "../users/user-model";
 import { generateToken } from "../token/token-service";
 
 export const signUp = async (req: Request, res: Response): Promise<void> => {
-  let { email, password } = req.body;
+  let { email, password,userName } = req.body;
   const validate = validateUser(req.body);
 
   if (validate.error) {
@@ -24,7 +24,7 @@ export const signUp = async (req: Request, res: Response): Promise<void> => {
   const hashedPassword = await bcrypt.hash(password, 10);
   const data = { ...validate.value, password: hashedPassword };
   const newUser = await User.create({...data,isVerified:true});
-  const token = await generateToken(email)
+  const token = await generateToken(userName)
   const withoutPassword = _.pick(newUser, ["userName","email"]);
   SuccessResponse.send(res, { data: { ...withoutPassword, token}});
 };

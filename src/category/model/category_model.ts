@@ -30,7 +30,9 @@ class UserQuiz extends Model {
   @Column
   categoryName!: string;
 
-  @Column
+  @Column({
+    defaultValue: DataTypes.UUIDV4 
+  })
   categoryId!: string;
 
  
