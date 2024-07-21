@@ -10,7 +10,7 @@ import {
 } from "sequelize-typescript";
 
 import User from "../../users/user-model";
-import UploadInfo from "../model/user_quiz_model"; 
+
 
 @Table({ tableName: "user_quizzes" })
 class UserQuiz extends Model {
@@ -40,8 +40,8 @@ class UserQuiz extends Model {
   @BelongsTo(() => User,"userId")
   user!: User;
 
-  @HasMany(() => UploadInfo)
-  userUpload!: UploadInfo[];
+  // @HasMany(() => UploadInfo)
+  // userUpload!: UploadInfo[];
 
 }
 
