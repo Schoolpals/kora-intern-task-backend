@@ -7,7 +7,6 @@ import {
     Table,
     Unique,
   } from "sequelize-typescript";
-import UserQuiz from "../category/model/category_model";
 
 
   @Table
@@ -30,9 +29,7 @@ import UserQuiz from "../category/model/category_model";
     @Column
     declare password: string;
 
-    @HasMany(() => UserQuiz)
-    userQuizzes!: UserQuiz[];
-  
+
     @BeforeSave
     static async formatEmail(user: User) {
       if (user.email) {
