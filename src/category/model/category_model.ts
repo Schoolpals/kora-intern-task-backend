@@ -53,8 +53,6 @@ class UserQuiz extends Model {
   @BelongsTo(() => User)
   user!: User;
 
-  @HasMany(() => UploadInfo, { foreignKey: "categoryId", as: "upload_info" })
-  declare upload: UploadInfo[];
 
 
 }
