@@ -27,5 +27,6 @@ export const createCategory = async (
     quizId,
     userId,
   });
-  res.status(200).json({ newCategory });
+  await newCategory.save()
+  res.status(200).json(newCategory.categoryName,newCategory.categoryId,newCategory.quizId );
 };
