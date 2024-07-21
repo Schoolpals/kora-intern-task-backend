@@ -42,7 +42,6 @@ class UserQuiz extends Model {
   })
   categoryId!: string;
 
-  @ForeignKey(() => Quiz)
   @Column({
     type: DataTypes.UUID,
     allowNull: false,
@@ -55,9 +54,6 @@ class UserQuiz extends Model {
   @HasMany(() => UploadInfo)
   userUpload!: UploadInfo[];
 
-
-  @BelongsTo(() => Quiz)
-  quiz!: Quiz;
 }
 
 export default UserQuiz;
