@@ -12,8 +12,6 @@ export const createCategory = async (
   res: Response
 ): Promise<void> => {
   const categoryName = req.body.categoryName as string;
-  const categoryId = generateCategoryId();
-  const quizId = generateQuizId();
   if (!categoryName) {
     ErrorResponse.send(res, { message: "Category name is required" });
     return;
@@ -23,7 +21,8 @@ export const createCategory = async (
     Error404Response.send(res, { error: "User Not Found" });
     return;
   }
-
+  const categoryId = generateCategoryId();
+  const quizId = generateQuizId();
   const newCategory = await UserQuiz.create({
     userId,
     categoryName,
@@ -36,5 +35,6 @@ export const createCategory = async (
     categoryId: newCategory.categoryId,
     quizId: newCategory.quizId,
   };
+
   SuccessResponse.send(res, response);
 };
