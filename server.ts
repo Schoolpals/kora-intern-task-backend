@@ -4,7 +4,6 @@ import sequelize from "./src/startup/db";
 import configChecks from "./src/startup/config-checks";
 import dotenv from "dotenv";
 import cors from "cors";
-import db from "./src/startup/db";
 
 // Rest of your Express app configuration
 dotenv.config();

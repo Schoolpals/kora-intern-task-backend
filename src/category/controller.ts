@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
-import UserQuiz from "./model/category_model";
 import SuccessResponse from "../utils/success-response";
 import { generateCategoryId } from "../utils/generate-category-id";
 import {generateQuizId} from "../utils/generate-quiz-id"
 import ErrorResponse from "../utils/error-response";
-import { findByUserId } from "../users/service/user-service";
 import Error404Response from "../utils/error-response";
+import UserQuiz from "./model/category_model";
+import SuccessResponse from "../utils/success-response";
 
 export const createCategory = async (req: Request, res: Response): Promise<void> => {
     const userId = req.user?.id
@@ -21,12 +21,6 @@ export const createCategory = async (req: Request, res: Response): Promise<void>
       }
     const categoryId = generateCategoryId()
     const quizId = generateQuizId()
-    console.log('Creating category with data:', {
-      categoryId,
-      userId,
-      categoryName,
-      quizId
-  });
     const newCategory = await UserQuiz.create({
       categoryId,
       userId,
@@ -34,4 +28,4 @@ export const createCategory = async (req: Request, res: Response): Promise<void>
       quizId
     });
     SuccessResponse.send(res, {message:{newCategory,categoryId,quizId}});
-};
+

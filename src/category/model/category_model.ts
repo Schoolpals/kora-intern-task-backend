@@ -33,11 +33,11 @@ class UserQuiz extends Model {
   categoryName!: string;
 
   @Column({
-    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4 
   })
   quizId!: string;
 
-  @BelongsTo(() => User)
+  @BelongsTo(() => User,"userId")
   user!: User;
 
   @HasMany(() => UploadInfo)

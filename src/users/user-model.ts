@@ -8,6 +8,8 @@ import {
     Unique,
   } from "sequelize-typescript";
 import UserQuiz from "../category/model/category_model";
+// import UserQuiz from "../category/model/category_model";
+
 
   @Table
   class User extends Model {
@@ -29,7 +31,7 @@ import UserQuiz from "../category/model/category_model";
     @Column
     declare password: string;
 
-    @HasMany(() => UserQuiz)
+    @HasMany(() => UserQuiz , "userId")
     userQuizzes!: UserQuiz[];
   
     @BeforeSave

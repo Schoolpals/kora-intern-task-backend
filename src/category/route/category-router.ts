@@ -11,7 +11,7 @@ router.put("/store-kora",storeKora)
 router.get("/piggy-display",piggy)
 router.put("/store-piggy",storePiggy)
 router.get("/quidax-display",quidax)
-router.post("/store-quidax",storeQuidax)
+router.put("/store-quidax",storeQuidax)
 router.post("/",isAuthenticated,createCategory)
 
 export default router

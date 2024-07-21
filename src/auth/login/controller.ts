@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 import { Request, Response } from "express";
 import _ from "lodash";
 import { generateToken } from "../../token/token-service";
+import { findByUsername } from "../../users/service/user-service";
 import SuccessResponse from '../../utils/success-response';
 import { validateLoginInfo } from '../validators/sign-in-validator';
 

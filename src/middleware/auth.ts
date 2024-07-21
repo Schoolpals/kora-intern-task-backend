@@ -1,10 +1,9 @@
-
-import { findByUsername } from './../service/user-service';
 import { Response, NextFunction, Request } from "express";
 import dotenv from "dotenv";
 import { UserAttributes } from "../utils/types";
 import { findUserToken } from "../token/token-service";
 import { UnAuthorizedException } from "../utils/unauthorized.exception";
+import { findByUsername } from "../users/service/user-service";
 dotenv.config();
 
 export const isAuthenticated = async (

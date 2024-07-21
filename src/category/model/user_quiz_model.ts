@@ -59,3 +59,4 @@ class UploadInfo extends Model {
 }
 
 export default UploadInfo;
+
