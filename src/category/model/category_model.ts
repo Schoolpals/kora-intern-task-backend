@@ -10,8 +10,9 @@ import {
 } from "sequelize-typescript";
 
 import User from "../../users/user-model";
-
 import UploadInfo from "./user_quiz_model";
+
+
 
 @Table({ tableName: "user_quizzes" })
 class UserQuiz extends Model {

@@ -8,7 +8,8 @@ import {
   BelongsTo,
 } from "sequelize-typescript";
 import User from "../../users/user-model";
-import UserQuiz from "../model/category_model";
+import UserQuiz from "./category_model";
+
 
 @Table({ tableName: "upload_info" })
 class UploadInfo extends Model {

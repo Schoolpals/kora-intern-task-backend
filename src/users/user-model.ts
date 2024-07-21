@@ -9,6 +9,7 @@ import {
   } from "sequelize-typescript";
 import UserQuiz from "../category/model/category_model";
 
+
   @Table
   class User extends Model {
     @Column
