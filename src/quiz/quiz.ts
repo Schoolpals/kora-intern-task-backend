@@ -9,6 +9,7 @@ import { generateQuesId } from "../utils/generate-ques-id";
 import UploadInfo from "../category/model/user_quiz_model";
 import UserQuiz from "../category/model/category_model";
 import { getUserQuizById } from "./service/quiz-service";
+import Error404Response from "../utils/error404-response"
 
 export const startQuiz = async (req: Request, res: Response): Promise<void> => {
   const validation = validateUsername(req.body);
@@ -83,36 +84,28 @@ export const userUpload = async (
   ErrorResponse.send(res, { message: "Unable to Upload quiz" });
 };
 
-export const displayUserQuiz = async (
-  req: Request,
-  res: Response
-): Promise<void> => {
+export const displayUserQuiz = async (req: Request,res: Response): Promise<void> => {
   const { quesId, quizId } = req.query;
-
-  const userId = req.user?.id;
-
-  const quiz = await UserQuiz.findOne({ where: { quizId } });
-
-  if (!userId) {
-    ErrorResponse.send(res, { message: "User not found" });
+  if (!quesId || typeof quesId !== 'string') {
+    ErrorResponse.send(res,{ message: "Invalid or missing quesId" });
     return;
   }
 
+  const quiz = await UserQuiz.findOne({where:{quizId}});
   if (!quiz) {
-    res.status(400).json({ message: "Quiz not found" });
+    Error404Response.send(res,{ message: "Quiz not found" });
     return;
   }
 
-  const userQuiz = await UploadInfo.findOne({ where: { quesId } });
-
+  const userQuiz = await UploadInfo.findOne({ where: { id: quesId } });
   if (!userQuiz) {
-    res.status(400).json({ message: "Error in finding quiz" });
+    ErrorResponse.send(res,{ message: "Error in finding quiz" });
     return;
   }
-
+  
   const question = await getUserQuizById(quesId);
   if (!question) {
-    res.status(400).json({ message: "Question not found" });
+    Error404Response.send(res,{ message: "Question not found" });
     return;
   }
 
@@ -121,5 +114,5 @@ export const displayUserQuiz = async (
     options: question.options,
     answer: question.answer,
   };
-  SuccessResponse.send(res, response);
+  SuccessResponse.send(res,{message:response});
 };

@@ -7,6 +7,6 @@ const router = express.Router();
 router.post("/start",startQuiz);
 router.post("/display-score",displayScore)
 router.post("/upload-quiz",isAuthenticated,userUpload)
-router.get("/get-quiz",isAuthenticated,displayUserQuiz)
+router.get("/get-quiz",displayUserQuiz)
 
 export default router

@@ -8,18 +8,19 @@ import { getPiggyQuizById } from "./service";
 export const piggy = async (req: Request, res: Response): Promise<void> => {
   const { quesId, quizId } = req.query;
   const parsedQuesId=parseInt(quesId as string, 10)
+  
   const quiz = await QuizInfo.findOne({ where: { quizId } });
-
   if (!quiz) {
     res.status(400).json({ message: "Quiz not found" });
     return;
   }
-  const piggyQuiz = await PiggyInfo.findOne({ where: {  quesId: parsedQuesId } });
 
+  const piggyQuiz = await PiggyInfo.findOne({ where: {  quesId: parsedQuesId } });
   if (!piggyQuiz) {
     res.status(400).json({ message: "Error in finding quiz" });
     return;
   }
+
   const question = await getPiggyQuizById(parseInt(quesId as string, 10));
   if (!question) {
     res.status(400).json({ message: "Question not found" });
