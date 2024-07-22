@@ -40,14 +40,6 @@ export const getCategoryByName = async (
   req: Request,
   res: Response
 ): Promise<void> => {
-  const userId = req.user?.id;
-  if (!userId) {
-    return;
-  }
-  const user = await findByUserId(userId);
-  if (!user) {
-    Error404Response.send(res, { error: "User Not Found" });
-  }
   const { categoryName } = req.query;
   if (!categoryName || typeof categoryName !== "string") {
     ErrorResponse.send(res, {

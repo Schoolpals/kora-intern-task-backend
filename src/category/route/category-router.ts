@@ -14,7 +14,7 @@ router.put("/store-piggy",storePiggy)
 router.get("/quidax-display",quidax)
 router.put("/store-quidax",storeQuidax)
 router.post("/",isAuthenticated,createCategory)
-router.get("/get-category",isAuthenticated,getCategoryByName)
+router.get("/get-category",getCategoryByName)
 router.get("/get-name",isAuthenticated,returnCategoryName)
 
 export default router
