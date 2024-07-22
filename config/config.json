@@ -14,10 +14,10 @@
     "dialect": "postgres"
   },
   "production": {
-    "username": "quiz_app_u9zt_user",
-    "password": "isBeV7zQjWSpJSxsQCjtpuKrEFW1M8Cf",
-    "database": "quiz_app_u9zt",
-    "host": "dpg-cqcnn7lds78s738q64b0-a",
+    "username": "localhost",
+    "password": "i1UGC5S9tWqJkscLIJO2d3gJZFHhMhxU",
+    "database": "intern_task_dy76",
+    "host": "dpg-cqcnmu5umphs73fhju60-a",
     "dialect": "postgres"
   }
 }
