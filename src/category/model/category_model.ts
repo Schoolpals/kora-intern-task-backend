@@ -40,8 +40,8 @@ class UserQuiz extends Model {
   @BelongsTo(() => User,"userId")
   user!: User;
 
-  @HasMany(() => UploadInfo)
-  userUpload!: UploadInfo[];
+  @HasMany(() => UploadInfo,{ as: 'questions'})
+  questions!: UploadInfo[];
 
 }
 
