@@ -72,11 +72,13 @@ export const returnCategoryName = async (
   if (!userId) {
     return;
   }
-  const user = await UserQuiz.findOne({ where: { userId } });
+  const user = await UserQuiz.findAll({ where: { userId } });
   if (!user) {
     Error404Response.send(res, { error: "User Not Found" });
     return;
   }
-  const category = user?.categoryName;
-  SuccessResponse.send(res, category);
+
+  const categoryNames = user.map((userQuiz) => userQuiz.categoryName);
+
+  SuccessResponse.send(res, { categoryNames });
 };
