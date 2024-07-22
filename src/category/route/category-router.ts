@@ -1,3 +1,4 @@
+import { returnCategoryName } from './../controller';
 import express from "express";
 import { piggy, storePiggy } from './../piggyvest/controller';
 import { kora, storeKora } from '../kora/controller';
@@ -14,5 +15,6 @@ router.get("/quidax-display",quidax)
 router.put("/store-quidax",storeQuidax)
 router.post("/",isAuthenticated,createCategory)
 router.get("/get-category",isAuthenticated,getCategoryByName)
+router.get("/get-name",isAuthenticated,returnCategoryName)
 
 export default router
