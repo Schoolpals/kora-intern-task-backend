@@ -93,7 +93,7 @@ export const displayUserQuiz = async (req: Request,res: Response): Promise<void>
     return;
   }
 
-  const category = await UploadInfo.findOne({ where: { categoryId } });
+  const category = await UploadInfo.findAll({ where: { categoryId } });
   if (!category) {
     ErrorResponse.send(res,{ message: "Error in finding quiz" });
     return;
