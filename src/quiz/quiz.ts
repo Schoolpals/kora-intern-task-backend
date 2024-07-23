@@ -1,3 +1,4 @@
+import { findCategoryId } from './../category/service';
 import { validateUpload } from "./validator/upload-quiz-validator";
 import { ErrorResponse } from "./../utils/error-response";
 import { validateUsername } from "./validator/quiz-validator";
@@ -85,34 +86,18 @@ export const userUpload = async (
 };
 
 export const displayUserQuiz = async (req: Request,res: Response): Promise<void> => {
-  const { quesId, quizId } = req.query;
-  if (!quesId || typeof quesId !== 'string') {
-    ErrorResponse.send(res,{ message: "Invalid or missing quesId" });
-    return;
-  }
-
-  const quiz = await UserQuiz.findOne({where:{quizId}});
+  const {  categoryId } = req.query;
+  const quiz = await UserQuiz.findOne({where:{categoryId}});
   if (!quiz) {
     Error404Response.send(res,{ message: "Quiz not found" });
     return;
   }
 
-  const userQuiz = await UploadInfo.findOne({ where: { id: quesId } });
-  if (!userQuiz) {
+  const category = await UploadInfo.findOne({ where: { categoryId } });
+  if (!category) {
     ErrorResponse.send(res,{ message: "Error in finding quiz" });
     return;
   }
   
-  const question = await getUserQuizById(quesId);
-  if (!question) {
-    Error404Response.send(res,{ message: "Question not found" });
-    return;
-  }
-
-  const response = {
-    question: question.question,
-    options: question.options,
-    answer: question.answer,
-  };
-  SuccessResponse.send(res,{message:response});
+  SuccessResponse.send(res,category);
 };

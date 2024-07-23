@@ -11,3 +11,14 @@ export const findCategoryByName = async (categoryName: string) => {
     }],
   });
 };
+
+export const findCategoryId = async (categoryId: string) => {
+  return await Category.findOne({
+    where: { categoryId },
+    include: [{
+      model: UploadInfo,
+      as: 'questions',
+      attributes: ['question', 'answer', 'options'],
+    }],
+  });
+};
